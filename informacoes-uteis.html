@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="meta.title.info">Informações Úteis — Interlog Brasil</title>
+  <meta name="description" content="Incoterms, conversor de moedas e especificação técnica de containers para o seu comércio exterior." />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- ============================================================
+       ÍCONE DA ABA DO NAVEGADOR (favicon)
+       Baseado no mesmo selo circular "IL" usado no logo do navbar.
+       Vários formatos/tamanhos para cobrir navegadores, iOS e Android.
+       ============================================================ -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span class="topbar-address" data-i18n="common.topbar.address">Av. Praia de Belas 1212 Cj. 1422 — Praia de Belas, Porto Alegre</span>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="BR">BR</button>
+        <button class="lang-btn" data-lang="EN">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-badge"><span>IL</span></div>
+        <div>
+          <div class="logo-text"><span class="logo-inter">INTER</span><span class="logo-log">LOG</span></div>
+          <div class="logo-sub">BRASIL</div>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link" data-i18n="common.nav.home">Home</a>
+        <a href="institucional.html" class="nav-link" data-i18n="common.nav.institucional">Institucional</a>
+        <a href="importacao-exportacao.html" class="nav-link" data-i18n="common.nav.importexport">Importação e Exportação</a>
+        <a href="informacoes-uteis.html" class="nav-link active" data-i18n="common.nav.info">Informações Úteis</a>
+        <a href="contato.html" class="nav-link" data-i18n="common.nav.contact">Contato</a>
+      </div>
+
+      <a href="contato.html" class="cta-btn nav-cta" data-i18n="common.nav.cta">Fale Conosco</a>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-24" id="hamburgerIcon">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" data-i18n="common.nav.home">Home</a>
+      <a href="institucional.html" data-i18n="common.nav.institucional">Institucional</a>
+      <a href="importacao-exportacao.html" data-i18n="common.nav.importexport">Importação e Exportação</a>
+      <a href="informacoes-uteis.html" class="active" data-i18n="common.nav.info">Informações Úteis</a>
+      <a href="contato.html" data-i18n="common.nav.contact">Contato</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-with-sidebar">
+      <div class="page-main">
+        <h1 class="page-title" data-i18n="info.page_title">Informações Úteis</h1>
+        <p class="body-text" data-i18n="info.intro">Selecione um dos recursos disponíveis no menu ao lado para acessar informações técnicas sobre comércio exterior.</p>
+
+        <div class="quick-links-grid">
+          <a href="incoterms.html" class="quick-link-card">
+            <h3 data-i18n="info.card.incoterms.title">Incoterms</h3>
+            <p data-i18n="info.card.incoterms.desc">Regras internacionais de comércio que definem responsabilidades entre vendedor e comprador.</p>
+            <div class="quick-link-cta" data-i18n="info.card.incoterms.cta">Ver detalhes →</div>
+          </a>
+
+          <a href="https://www.bcb.gov.br/conversao" target="_blank" rel="noopener noreferrer" class="quick-link-card">
+            <h3 data-i18n="info.card.currency.title">Conversor de Moedas</h3>
+            <p data-i18n="info.card.currency.desc">Acesse o conversor de moedas oficial do Banco Central do Brasil.</p>
+            <div class="quick-link-cta" data-i18n="info.card.currency.cta">Acessar →</div>
+          </a>
+
+          <a href="especificacao-containers.html" class="quick-link-card">
+            <h3 data-i18n="info.card.containers.title">Especificação Containers</h3>
+            <p data-i18n="info.card.containers.desc">Dimensões, pesos e capacidades dos principais tipos de containers.</p>
+            <div class="quick-link-cta" data-i18n="info.card.containers.cta">Ver detalhes →</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Menu lateral de navegação entre as sub-páginas de Informações Úteis -->
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <a href="incoterms.html" class="sidebar-link" data-i18n="sidebar.incoterms">Inconterms</a>
+          <a href="https://www.bcb.gov.br/conversao" target="_blank" rel="noopener noreferrer" class="sidebar-link" data-i18n="sidebar.currency">Conversor de Moedas</a>
+          <a href="especificacao-containers.html" class="sidebar-link" data-i18n="sidebar.containers">Especificação Containers</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo-text footer-logo"><span class="logo-inter">INTER</span><span class="logo-log">LOG</span></div>
+          <p class="footer-desc" data-i18n="common.footer.desc">Soluções completas em comércio exterior, assessoria aduaneira e logística internacional.</p>
+        </div>
+        <div class="footer-nav">
+          <h4 data-i18n="common.footer.nav_title">Navegação</h4>
+          <a href="index.html" data-i18n="common.nav.home">Home</a>
+          <a href="institucional.html" data-i18n="common.nav.institucional">Institucional</a>
+          <a href="importacao-exportacao.html" data-i18n="common.nav.importexport">Importação e Exportação</a>
+          <a href="informacoes-uteis.html" data-i18n="common.nav.info">Informações Úteis</a>
+          <a href="contato.html" data-i18n="common.nav.contact">Contato</a>
+        </div>
+        <div>
+          <h4 data-i18n="common.footer.contact_title">Contato</h4>
+          <p class="footer-desc" data-i18n-html="common.footer.address_html">
+            Av. Praia de Belas 1212, Cj. 1422<br />
+            Praia de Belas — Porto Alegre, RS<br /><br />
+            <a href="mailto:contato@interlogbrasil.com.br" class="footer-email">contato@interlogbrasil.com.br</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="common.footer.rights">© 2026 Interlog Brasil. Todos os direitos reservados.</span>
+        <span>CNPJ 00.000.000/0001-00</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
