@@ -1,0 +1,887 @@
+/* ============================================================================
+   INTERLOG BRASIL — FOLHA DE ESTILOS PRINCIPAL
+   ============================================================================
+   Este arquivo concentra TODO o CSS do site. Ele está organizado em blocos,
+   na mesma ordem em que os elementos aparecem na página, para facilitar
+   ajustes manuais futuros:
+
+     1. Fontes e variáveis globais (cores, fontes, espaçamentos)
+     2. Reset básico e estilos globais (html, body, links, scrollbar)
+     3. Utilitários (classes reaproveitáveis: .container, ícones, etc.)
+     4. Barra superior (topbar) e seletor de idioma
+     5. Menu de navegação (navbar) + menu mobile
+     6. Seção Hero (banner principal)
+     7. Faixa de estatísticas
+     8. Seção de Serviços
+     9. Painéis de informação (cotação do dólar / import-export)
+    10. Rodapé (footer)
+    11. Páginas internas (título, textos, listas, tabelas, cards, formulário)
+    12. Responsividade (media queries)
+
+   Dica: use Ctrl+F / Cmd+F e procure pelo nome do bloco (ex.: "NAVBAR")
+   para pular direto para a seção que deseja editar.
+   ========================================================================== */
+
+
+/* ----------------------------------------------------------------------------
+   1. FONTES E VARIÁVEIS GLOBAIS
+   ---------------------------------------------------------------------------- */
+
+/* Fontes do Google Fonts usadas no projeto:
+   - Barlow  -> títulos e destaques (font-heading)
+   - DM Sans -> textos e corpo do site (font-body) */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+:root {
+  /* Paleta de cores da marca Interlog Brasil */
+  --navy: #0d1b2e;              /* Azul-marinho escuro — cor de fundo principal */
+  --navy-mid: #152339;          /* Azul-marinho intermediário — cards, navbar */
+  --navy-light: #1e3252;        /* Azul-marinho claro — hover / destaque */
+  --red: #c8232c;               /* Vermelho institucional — cor de destaque/CTA */
+  --red-hover: #a61b23;         /* Vermelho mais escuro — hover dos botões vermelhos */
+  --slate: #8fa3bd;             /* Cinza-azulado — textos secundários */
+  --border: rgba(255, 255, 255, 0.08); /* Linhas divisórias sutis sobre fundo escuro */
+
+  /* Tipografia */
+  --font-heading: 'Barlow', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+
+/* ----------------------------------------------------------------------------
+   2. RESET BÁSICO E ESTILOS GLOBAIS
+   ---------------------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* rolagem suave ao clicar em âncoras (#) */
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: #f0f4f8;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Barra de rolagem customizada (Chrome / Edge / Safari) */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: #2e4a6e; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--red); }
+
+/* Acessibilidade: contorno de foco visível ao navegar com teclado (Tab) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+
+/* ----------------------------------------------------------------------------
+   3. UTILITÁRIOS
+   ---------------------------------------------------------------------------- */
+
+/* Centraliza o conteúdo e limita a largura máxima em todas as seções */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.icon-32 { width: 32px; height: 32px; }
+.icon-24 { width: 24px; height: 24px; }
+.icon-16 { width: 16px; height: 16px; }
+.icon-12 { width: 12px; height: 12px; }
+
+.text-red { color: var(--red); }
+
+
+/* ----------------------------------------------------------------------------
+   4. BARRA SUPERIOR (TOPBAR)
+   ---------------------------------------------------------------------------- */
+
+.topbar {
+  background: #08111e;
+  border-bottom: 1px solid var(--border);
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+}
+.topbar-address {
+  color: var(--slate);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+/* Seletor de idioma (BR / EN).
+   OBS.: por padrão o site é 100% em português. O botão já alterna o estado
+   visual (classe .active) via JS, mas a tradução do conteúdo para inglês
+   ainda precisa ser implementada — ver README.md para instruções. */
+.lang-switch { display: flex; align-items: center; gap: 4px; }
+.lang-btn {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: transparent;
+  color: var(--slate);
+}
+.lang-btn.active { background: var(--red); color: #fff; }
+
+
+/* ----------------------------------------------------------------------------
+   5. NAVBAR + MENU MOBILE
+   ---------------------------------------------------------------------------- */
+
+.navbar {
+  background: var(--navy-mid);
+  border-bottom: 1px solid var(--border);
+  position: sticky; /* menu "gruda" no topo ao rolar a página */
+  top: 0;
+  z-index: 50;
+}
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.logo-badge {
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.logo-badge span {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--red);
+  font-style: italic;
+}
+.logo-text {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-align: left;
+}
+.logo-inter { color: #f0f4f8; }
+.logo-log { color: var(--red); }
+.logo-sub { color: var(--slate); font-size: 10px; letter-spacing: 0.15em; margin-top: 2px; }
+
+/* Links de navegação — visíveis apenas em telas médias/grandes (ver item 12) */
+.nav-links { display: none; align-items: center; gap: 4px; }
+.nav-link {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--slate);
+  border-radius: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s;
+}
+.nav-link:hover { color: #fff; }
+.nav-link.active { color: #fff; border-bottom-color: var(--red); }
+
+/* Botão vermelho de call-to-action, reaproveitado em vários pontos do site */
+.cta-btn {
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cta-btn:hover { background: var(--red-hover); }
+.nav-cta { display: none; } /* some no mobile, aparece a partir do breakpoint md */
+
+.hamburger {
+  display: flex;
+  background: none;
+  border: none;
+  color: #f0f4f8;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-menu {
+  display: none; /* controlado via JS (classe .open) em js/script.js */
+  background: var(--navy-mid);
+  border-top: 1px solid var(--border);
+  padding: 12px 24px 20px;
+}
+.mobile-menu.open { display: block; }
+.mobile-menu a {
+  display: block;
+  padding: 10px 0;
+  color: #c8d6e8;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mobile-menu a.active { color: var(--red); font-weight: 600; }
+
+
+/* ----------------------------------------------------------------------------
+   6. HERO (BANNER PRINCIPAL DA HOME)
+   ---------------------------------------------------------------------------- */
+
+.hero { position: relative; min-height: 580px; display: flex; align-items: center; overflow: hidden; }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1606185540834-d6e7483ee1a4?w=1400&h=700&fit=crop&auto=format');
+  background-size: cover;
+  background-position: center 40%;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, var(--navy) 42%, rgba(13,27,46,0.82) 65%, rgba(13,27,46,0.3) 100%);
+}
+.hero-accent { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); }
+.hero-inner { position: relative; z-index: 1; padding: 80px 0; width: 100%; }
+.hero-content { max-width: 560px; }
+
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+.eyebrow-line { width: 28px; height: 2px; background: var(--red); display: inline-block; }
+.eyebrow-text { color: var(--red); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+
+.hero-title {
+  font-weight: 900;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: #f0f4f8;
+  margin-bottom: 24px;
+}
+.hero-desc { color: #a8bcd4; font-size: 16px; line-height: 1.7; margin-bottom: 36px; max-width: 440px; }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-buttons .cta-btn { padding: 13px 28px; font-size: 14px; }
+
+.outline-btn {
+  background: transparent;
+  color: #f0f4f8;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 4px;
+  padding: 13px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.outline-btn:hover { border-color: rgba(255,255,255,0.6); }
+
+
+/* ----------------------------------------------------------------------------
+   7. FAIXA DE ESTATÍSTICAS
+   ---------------------------------------------------------------------------- */
+
+.stats-band { background: var(--red); }
+.stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+.stat { padding: 24px 0; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); }
+.stat:nth-child(2n) { border-right: none; }
+.stat-value { font-family: var(--font-heading); font-weight: 900; font-size: 28px; color: #fff; line-height: 1; }
+.stat-label { color: rgba(255,255,255,0.75); font-size: 12px; margin-top: 6px; letter-spacing: 0.04em; }
+
+
+/* ----------------------------------------------------------------------------
+   8. SEÇÃO DE SERVIÇOS
+   ---------------------------------------------------------------------------- */
+
+.services { background: var(--navy); padding: 96px 0 80px; }
+.services-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 56px; }
+.section-title { font-weight: 800; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.02em; color: #f0f4f8; line-height: 1.1; }
+.see-all {
+  color: var(--slate);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.15s;
+}
+.see-all:hover { color: var(--red); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.service-card {
+  background: var(--navy-mid);
+  padding: 36px 28px;
+  transition: background 0.2s;
+  cursor: pointer;
+  position: relative;
+  text-align: left;
+  border: none;
+  font-family: var(--font-body);
+  display: block;
+  width: 100%;
+  color: inherit;
+}
+.service-card:hover { background: var(--navy-light); }
+.service-card.highlight { background: var(--navy-light); }
+.service-card.highlight::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--red);
+}
+.service-icon { color: var(--slate); margin-bottom: 20px; transition: color 0.2s; }
+.service-card.highlight .service-icon { color: var(--red); }
+.service-card h3 {
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: #c8d6e8;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.service-card.highlight h3 { color: #f0f4f8; }
+.service-card p { color: #6e8aab; font-size: 13px; line-height: 1.65; }
+.service-more {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #4d6880;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.service-card.highlight .service-more { color: var(--red); }
+
+
+/* ----------------------------------------------------------------------------
+   9. PAINÉIS DE INFORMAÇÃO (Cotação do Dólar / Import-Export) — Home
+   ---------------------------------------------------------------------------- */
+
+.info-panels { background: #f4f7fb; padding: 80px 0; }
+.info-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+.info-card { background: #fff; border-radius: 6px; padding: 40px; border: 1px solid #e2e8f0; }
+.info-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.info-bar { width: 3px; height: 22px; background: var(--red); border-radius: 2px; }
+.info-head h3 { font-weight: 800; font-size: 22px; color: var(--navy); letter-spacing: -0.01em; }
+.info-body { margin-left: 13px; }
+.quote-row { display: flex; align-items: baseline; gap: 6px; margin: 20px 0 8px; }
+.quote-value { font-family: var(--font-heading); font-weight: 900; font-size: 40px; color: var(--navy); line-height: 1; }
+.quote-change { font-size: 13px; color: #e63946; font-weight: 600; }
+.info-text { color: #64748b; font-size: 13px; line-height: 1.65; max-width: 340px; }
+.quote-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin: 16px 0;
+  transition: background 0.15s;
+}
+.quote-link:hover { background: var(--red); }
+.quote-note {
+  margin-top: 4px;
+  padding: 14px 18px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  color: #991b1b;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.info-text-dark { color: #475569; font-size: 14px; line-height: 1.7; margin-top: 16px; margin-bottom: 20px; }
+.info-text-dark strong { color: var(--navy); font-weight: 600; }
+.dark-btn {
+  margin-top: 24px;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 11px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.dark-btn:hover { background: var(--red); }
+
+
+/* ----------------------------------------------------------------------------
+   10. RODAPÉ (FOOTER)
+   ---------------------------------------------------------------------------- */
+
+.footer { background: #08111e; border-top: 1px solid var(--border); padding: 48px 0 32px; }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-logo { font-size: 18px; margin-bottom: 12px; }
+.footer-desc { color: #6e8aab; font-size: 13px; line-height: 1.7; max-width: 240px; }
+.footer h4 {
+  color: var(--slate);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.footer-nav a {
+  display: block;
+  color: #6e8aab;
+  font-size: 13px;
+  margin-bottom: 8px;
+  transition: color 0.15s;
+}
+.footer-nav a:hover { color: #f0f4f8; }
+.footer-email { color: var(--red) !important; }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom span { color: #4d6880; font-size: 12px; }
+
+
+/* ----------------------------------------------------------------------------
+   11. PÁGINAS INTERNAS
+   (Institucional, Importação e Exportação, Informações Úteis, Incoterms,
+    Especificação de Containers, Contato)
+   ---------------------------------------------------------------------------- */
+
+/* Envoltório padrão de página interna de conteúdo (texto único, sem sidebar) */
+.page-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+/* Envoltório de página com sidebar lateral (Informações Úteis, Incoterms, Containers) */
+.page-with-sidebar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 24px;
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+.page-main { flex: 1; min-width: 0; }
+
+.page-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--red);
+  margin-bottom: 40px;
+  letter-spacing: -0.01em;
+}
+.section-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--red);
+  margin-bottom: 12px;
+  margin-top: 36px;
+}
+.section-heading:first-of-type { margin-top: 0; }
+.sub-heading {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--red);
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+.body-text {
+  color: #a8bcd4;
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.body-text strong { color: #f0f4f8; font-weight: 600; }
+
+/* Item de lista com marcador circular (usado em Institucional / Import-Export) */
+.list-item {
+  color: #a8bcd4;
+  font-size: 14px;
+  line-height: 1.65;
+  padding: 5px 0;
+  padding-left: 16px;
+  position: relative;
+  list-style: none;
+}
+.list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+/* Menu lateral usado nas páginas de "Informações Úteis" */
+.sidebar { width: 220px; flex-shrink: 0; }
+.sidebar-box {
+  background: var(--navy-mid);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.sidebar-link {
+  display: block;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--red);
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  border-radius: 0 4px 4px 0;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  font-family: var(--font-body);
+}
+.sidebar-link:hover { border-left-color: var(--red); background: rgba(200,35,44,0.08); }
+.sidebar-link.active { border-left-color: var(--red); background: rgba(200,35,44,0.12); color: #f0f4f8; }
+
+/* Cards de acesso rápido na página "Informações Úteis" */
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+.quick-link-card {
+  background: var(--navy-mid);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  padding: 28px 24px;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.15s;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  color: inherit;
+  width: 100%;
+}
+.quick-link-card:hover { border-color: rgba(200,35,44,0.4); }
+.quick-link-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+.quick-link-card p { color: #8fa3bd; font-size: 13px; line-height: 1.65; }
+.quick-link-card .quick-link-cta { margin-top: 16px; font-size: 12px; color: var(--red); font-weight: 600; }
+
+/* Tabela de especificações técnicas (Especificação de Containers) */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 32px;
+}
+.spec-table caption {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--red);
+  text-align: left;
+  padding: 8px 0 12px;
+  letter-spacing: 0.02em;
+}
+.spec-table th {
+  background: rgba(200,35,44,0.12);
+  color: var(--slate);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  text-align: left;
+}
+.spec-table td {
+  padding: 9px 14px;
+  color: #a8bcd4;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  vertical-align: top;
+}
+.spec-table tr:hover td { background: rgba(255,255,255,0.02); }
+.spec-table td:first-child { color: #c8d6e8; font-weight: 500; }
+.spec-table td:last-child { color: #f0f4f8; }
+
+/* Abas (tabs) de tipos de container */
+.tabs-row { display: flex; gap: 4px; margin-bottom: 40px; flex-wrap: wrap; }
+.tab-btn {
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  letter-spacing: 0.04em;
+  background: var(--navy-mid);
+  color: var(--slate);
+  transition: all 0.15s;
+}
+.tab-btn.active { background: var(--red); color: #fff; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* Cards de Incoterms */
+.incoterm-card {
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  background: var(--navy-mid);
+  transition: border-color 0.15s;
+}
+.incoterm-card:hover { border-color: rgba(200,35,44,0.3); }
+.incoterm-code {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--red);
+  margin-bottom: 2px;
+}
+.incoterm-name {
+  font-size: 12px;
+  color: var(--slate);
+  font-weight: 500;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+.incoterm-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #8fa3bd;
+}
+.incoterms-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+
+/* Caixas de "boas práticas" (Incoterms) */
+.practice-box {
+  background: rgba(200,35,44,0.08);
+  border-left: 3px solid var(--red);
+  border-radius: 0 6px 6px 0;
+  padding: 16px 20px;
+  margin: 20px 0;
+}
+.practice-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+.practice-text {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #8fa3bd;
+}
+
+/* Página de Contato: layout de duas colunas (informações + formulário) */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 64px;
+}
+.map-embed {
+  margin-top: 24px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  height: 280px;
+  background: var(--navy-mid);
+}
+.map-embed iframe { width: 100%; height: 100%; border: 0; }
+
+.contact-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 7px;
+}
+.contact-input {
+  width: 100%;
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #f0f4f8;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.15s;
+  margin-bottom: 16px;
+}
+.contact-input:focus { border-color: var(--red); }
+.contact-input::placeholder { color: #4d6880; }
+textarea.contact-input { resize: vertical; margin-bottom: 20px; }
+
+.contact-submit-btn {
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 13px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.15s;
+  width: 100%;
+}
+.contact-submit-btn:hover { background: var(--red-hover); }
+.contact-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Mensagem de sucesso exibida após o envio do formulário de contato */
+.contact-success {
+  background: rgba(200,35,44,0.1);
+  border: 1px solid rgba(200,35,44,0.3);
+  border-radius: 6px;
+  padding: 28px 24px;
+  text-align: center;
+  display: none; /* exibido via JS quando o formulário é enviado com sucesso */
+}
+.contact-success.visible { display: block; }
+.contact-success-icon { font-size: 28px; margin-bottom: 12px; color: var(--red); }
+.contact-success-title { color: #c8d6e8; font-weight: 600; font-size: 15px; }
+.contact-success-sub { color: var(--slate); font-size: 13px; margin-top: 8px; }
+.contact-success-btn {
+  margin-top: 20px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.contact-success-btn:hover { background: var(--red-hover); }
+
+/* Mensagem de erro de validação simples do formulário */
+.contact-error {
+  display: none;
+  background: rgba(230, 57, 70, 0.1);
+  border: 1px solid rgba(230, 57, 70, 0.4);
+  color: #ff9b9b;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.contact-error.visible { display: block; }
+
+
+/* ----------------------------------------------------------------------------
+   12. RESPONSIVIDADE
+   ---------------------------------------------------------------------------- */
+
+/* Tablets e telas médias (>= 768px): mostra menu completo, esconde hambúrguer */
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+  .nav-cta { display: flex; }
+  .hamburger { display: none; }
+  .stats-grid { grid-template-columns: repeat(4, 1fr); }
+  .stat { border-right: 1px solid rgba(255,255,255,0.2); }
+  .stat:nth-child(2n) { border-right: 1px solid rgba(255,255,255,0.2); }
+  .stat:nth-child(4n) { border-right: none; }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Telas pequenas/médias (>= 640px): grade de serviços em 2 colunas */
+@media (min-width: 640px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Telas grandes (>= 1024px): grade de serviços em 4 colunas, painéis lado a lado */
+@media (min-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(4, 1fr); }
+  .info-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Telas pequenas (< 900px): sidebar das páginas internas empilha acima do conteúdo */
+@media (max-width: 900px) {
+  .page-with-sidebar { flex-direction: column; }
+  .sidebar { width: 100%; }
+  .sidebar-box { display: flex; flex-wrap: wrap; }
+  .sidebar-link { flex: 1; min-width: 160px; text-align: center; border-left: none; border-bottom: 3px solid transparent; }
+  .sidebar-link:hover { border-left-color: transparent; border-bottom-color: var(--red); }
+  .sidebar-link.active { border-left-color: transparent; border-bottom-color: var(--red); }
+}

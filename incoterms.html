@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="meta.title.incoterms">Incoterms — Interlog Brasil</title>
+  <meta name="description" content="Conheça as regras Incoterms para qualquer modal de transporte e para transporte marítimo, com pontos de atenção importantes." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span class="topbar-address" data-i18n="common.topbar.address">Av. Praia de Belas 1212 Cj. 1422 — Praia de Belas, Porto Alegre</span>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="BR">BR</button>
+        <button class="lang-btn" data-lang="EN">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-badge"><span>IL</span></div>
+        <div>
+          <div class="logo-text"><span class="logo-inter">INTER</span><span class="logo-log">LOG</span></div>
+          <div class="logo-sub">BRASIL</div>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link" data-i18n="common.nav.home">Home</a>
+        <a href="institucional.html" class="nav-link" data-i18n="common.nav.institucional">Institucional</a>
+        <a href="importacao-exportacao.html" class="nav-link" data-i18n="common.nav.importexport">Importação e Exportação</a>
+        <a href="informacoes-uteis.html" class="nav-link active" data-i18n="common.nav.info">Informações Úteis</a>
+        <a href="contato.html" class="nav-link" data-i18n="common.nav.contact">Contato</a>
+      </div>
+
+      <a href="contato.html" class="cta-btn nav-cta" data-i18n="common.nav.cta">Fale Conosco</a>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-24" id="hamburgerIcon">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" data-i18n="common.nav.home">Home</a>
+      <a href="institucional.html" data-i18n="common.nav.institucional">Institucional</a>
+      <a href="importacao-exportacao.html" data-i18n="common.nav.importexport">Importação e Exportação</a>
+      <a href="informacoes-uteis.html" class="active" data-i18n="common.nav.info">Informações Úteis</a>
+      <a href="contato.html" data-i18n="common.nav.contact">Contato</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-with-sidebar">
+      <div class="page-main">
+        <h1 class="page-title" data-i18n="incoterms.page_title">Incoterms</h1>
+
+        <p class="body-text" style="font-weight: 600; color: #c8d6e8;" data-i18n="incoterms.intro">INCOTERMS are grouped into two classes:</p>
+
+        <h2 class="section-heading" data-i18n="incoterms.section1.heading">1. Terms for any transport mode</h2>
+        <div class="incoterms-list">
+          <div class="incoterm-card">
+            <div class="incoterm-code">EXW</div>
+            <div class="incoterm-name" data-i18n="incoterm.EXW.name">EX WORKS (... named place of delivery)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.EXW.desc">The Seller's only responsibility is to make the goods available at the Seller's premises. The Buyer bears full costs and risks of moving the goods from there to destination.</div>
+          </div>
+          <div class="incoterm-card">
+            <div class="incoterm-code">FCA</div>
+            <div class="incoterm-name" data-i18n="incoterm.FCA.name">FREE CARRIER (... named place of delivery)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.FCA.desc">The Seller delivers the goods, cleared for export, to the carrier selected by the Buyer. The Seller loads the goods if the carrier pickup is at the Seller's premises. From that point, the Buyer bears the costs and risks of moving the goods to destination.</div>
+          </div>
+          <div class="incoterm-card">
+            <div class="incoterm-code">CPT</div>
+            <div class="incoterm-name" data-i18n="incoterm.CPT.name">CARRIAGE PAID TO (... named place of destination)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.CPT.desc">The Seller pays for moving the goods to destination. From the time the goods are transferred to the first carrier, the Buyer bears the risks of loss or damage.</div>
+          </div>
+          <div class="incoterm-card">
+            <div class="incoterm-code">CIP</div>
+            <div class="incoterm-name" data-i18n="incoterm.CIP.name">CARRIAGE AND INSURANCE PAID TO (... named place of destination)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.CIP.desc">The Seller pays for moving the goods to destination. From the time the goods are transferred to the first carrier, the Buyer bears the risks of loss or damage. The Seller, however, purchases the cargo insurance.</div>
+          </div>
+          <div class="incoterm-card">
+            <div class="incoterm-code">DAT</div>
+            <div class="incoterm-name" data-i18n="incoterm.DAT.name">DELIVERED AT TERMINAL (... named terminal at port or place of destination)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.DAT.desc">The Seller delivers when the goods, once unloaded from the arriving means of transport, are placed at the Buyer's disposal at a named terminal at the named port or place of destination. The Seller bears all risks involved in bringing the goods to and unloading them at the terminal.</div>
+          </div>
+          <div class="incoterm-card">
+            <div class="incoterm-code">DAP</div>
+            <div class="incoterm-name" data-i18n="incoterm.DAP.name">DELIVERED AT PLACE (... named place of destination)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.DAP.desc">The Seller delivers when the goods are placed at the Buyer's disposal on the arriving means of transport ready for unloading at the named place of destination. The Seller bears all risks involved in bringing the goods to the named place.</div>
+          </div>
+          <div class="incoterm-card">
+            <div class="incoterm-code">DDP</div>
+            <div class="incoterm-name" data-i18n="incoterm.DDP.name">DELIVERED DUTY PAID (... named place)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.DDP.desc">The Seller delivers the goods — cleared for import — to the Buyer at destination. The Seller bears all costs and risks of moving the goods to destination, including the payment of Customs duties and taxes.</div>
+          </div>
+        </div>
+
+        <h2 class="section-heading" data-i18n="incoterms.section2.heading">2. Maritime-only terms</h2>
+        <div class="incoterms-list">
+          <div class="incoterm-card">
+            <div class="incoterm-code">FAS</div>
+            <div class="incoterm-name" data-i18n="incoterm.FAS.name">FREE ALONGSIDE SHIP (... named port of shipment)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.FAS.desc">The Seller delivers the goods to the origin port. From that point, the Buyer bears all costs and risks of loss or damage.</div>
+          </div>
+          <div class="incoterm-card">
+            <div class="incoterm-code">FOB</div>
+            <div class="incoterm-name" data-i18n="incoterm.FOB.name">FREE ON BOARD (... named port of shipment)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.FOB.desc">The Seller delivers the goods on board the ship and clears the goods for export. From that point, the Buyer bears all costs and risks of loss or damage.</div>
+          </div>
+          <div class="incoterm-card">
+            <div class="incoterm-code">CFR</div>
+            <div class="incoterm-name" data-i18n="incoterm.CFR.name">COST AND FREIGHT (... named port of destination)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.CFR.desc">The Seller clears the goods for export and pays the costs of moving the goods to destination. The Buyer bears all risks of loss or damage.</div>
+          </div>
+          <div class="incoterm-card">
+            <div class="incoterm-code">CIF</div>
+            <div class="incoterm-name" data-i18n="incoterm.CIF.name">COST INSURANCE AND FREIGHT (... named port of destination)</div>
+            <div class="incoterm-desc" data-i18n="incoterm.CIF.desc">The Seller clears the goods for export and pays the costs of moving the goods to the port of destination. The Buyer bears all risks of loss or damage. The Seller, however, purchases the cargo insurance.</div>
+          </div>
+        </div>
+
+        <h2 class="section-heading" data-i18n="incoterms.practice.heading">Practice Points</h2>
+
+        <div class="practice-box">
+          <div class="practice-title" data-i18n="practice.1.title">Be Specific</div>
+          <div class="practice-text" data-i18n="practice.1.text">If you use INCOTERMS in the Sales Contract or Purchase Order, you should identify the appropriate INCOTERM Rule (e.g. FCA, CPT, etc.), state "INCOTERMS 2010" and specify the place or port as precisely as possible.</div>
+        </div>
+
+        <div class="practice-box">
+          <div class="practice-title" data-i18n="practice.2.title">Recognize where the risk of loss transfers</div>
+          <div class="practice-text" data-i18n="practice.2.text">A common misconception when the Seller pays the freight is that the Seller has the risk of loss until the goods are delivered to the place or port specified on the bill of lading or airway bill. Actually, when using INCOTERMS CPT, CIP, CFR or CIF, risk transfers to the Buyer when the Seller hands the goods over to the carrier at origin, not when the goods reach the place or port of destination. Under CIP and CIF, the Seller is only obliged to obtain insurance on minimum cover.</div>
+        </div>
+
+        <div class="practice-box">
+          <div class="practice-title" data-i18n="practice.3.title">Understand loading and unloading charges</div>
+          <div class="practice-text" data-i18n-html="practice.3.text">DAT obliges the Seller to place the goods at the Buyer's disposal after unloading at the named terminal at port or place of destination. DAP and DDP oblige the Seller to place the goods at the Buyer's disposal on the delivering carrier <em>ready for unloading</em> at the named place of destination.</div>
+        </div>
+
+        <div class="practice-box">
+          <div class="practice-title" data-i18n="practice.4.title">U.S. Customs entry declarations</div>
+          <div class="practice-text" data-i18n="practice.4.text">DDP is the only INCOTERM where the Seller has responsibility for U.S. Customs entry declarations. An important factor to be considered when asking the Seller to be responsible for international carriage, is if the goods ship by Ocean Freight, an Importer Security Filing (ISF) must be electronically submitted to Customs 24 hours before the cargo is laden on the vessel. The ISF does not apply to airfreight shipments.</div>
+        </div>
+
+        <div class="practice-box">
+          <div class="practice-title" data-i18n="practice.5.title">Determine the importance of supply chain visibility</div>
+          <div class="practice-text" data-i18n="practice.5.text">When CPT, CIP, CFR or CIF are used the Seller fulfills its obligation to deliver when it hands the goods over to the carrier, not when the goods reach the place of destination. DAT, DAP and DDP the Seller fulfills its obligation to deliver at the named destination. The Seller has no obligation to provide transit status updates.</div>
+        </div>
+      </div>
+
+      <!-- Menu lateral: mesma navegação usada em todas as sub-páginas de Informações Úteis -->
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <a href="incoterms.html" class="sidebar-link active" data-i18n="sidebar.incoterms">Inconterms</a>
+          <a href="https://www.bcb.gov.br/conversao" target="_blank" rel="noopener noreferrer" class="sidebar-link" data-i18n="sidebar.currency">Conversor de Moedas</a>
+          <a href="especificacao-containers.html" class="sidebar-link" data-i18n="sidebar.containers">Especificação Containers</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo-text footer-logo"><span class="logo-inter">INTER</span><span class="logo-log">LOG</span></div>
+          <p class="footer-desc" data-i18n="common.footer.desc">Soluções completas em comércio exterior, assessoria aduaneira e logística internacional.</p>
+        </div>
+        <div class="footer-nav">
+          <h4 data-i18n="common.footer.nav_title">Navegação</h4>
+          <a href="index.html" data-i18n="common.nav.home">Home</a>
+          <a href="institucional.html" data-i18n="common.nav.institucional">Institucional</a>
+          <a href="importacao-exportacao.html" data-i18n="common.nav.importexport">Importação e Exportação</a>
+          <a href="informacoes-uteis.html" data-i18n="common.nav.info">Informações Úteis</a>
+          <a href="contato.html" data-i18n="common.nav.contact">Contato</a>
+        </div>
+        <div>
+          <h4 data-i18n="common.footer.contact_title">Contato</h4>
+          <p class="footer-desc" data-i18n-html="common.footer.address_html">
+            Av. Praia de Belas 1212, Cj. 1422<br />
+            Praia de Belas — Porto Alegre, RS<br /><br />
+            <a href="mailto:contato@interlogbrasil.com.br" class="footer-email">contato@interlogbrasil.com.br</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="common.footer.rights">© 2026 Interlog Brasil. Todos os direitos reservados.</span>
+        <span>CNPJ 00.000.000/0001-00</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
